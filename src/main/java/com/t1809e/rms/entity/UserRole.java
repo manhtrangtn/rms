@@ -1,5 +1,7 @@
 package com.t1809e.rms.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.t1809e.rms.utility.constance.PropertyName;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -16,15 +18,19 @@ public class UserRole {
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(unique = true, length = 50, nullable = false)
     private String id;
+    @Column(name = PropertyName.ROLE_NAME, nullable = false)
     private String name;
     @CreationTimestamp
+    @Column(name = PropertyName.ROLE_CREATED_AT)
     private LocalDateTime createdAt;
     @UpdateTimestamp
+    @Column(name = PropertyName.ROLE_UPDATED_AT)
     private LocalDateTime updatedAt;
-    @Column(length = 15, nullable = false)
+    @Column(name = PropertyName.ROLE_STATUS, length = 15, nullable = false)
     private String status;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "role")
     private List<User> users;
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "menu_role",
             joinColumns = {@JoinColumn(name = "role_id")},

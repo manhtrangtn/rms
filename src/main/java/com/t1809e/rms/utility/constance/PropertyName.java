@@ -29,4 +29,11 @@ public interface PropertyName {
     String MENU_CREATED_AT = "created_at";
     String MENU_UPDATED_AT = "updated_at";
     String MENU_STATUS = "status";
+
+    //Role table
+
+    String ROLE_NAME = "name";
+    String ROLE_CREATED_AT = "created_at";
+    String ROLE_UPDATED_AT = "updated_at";
+    String ROLE_STATUS = "status";
 }

@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface MenuRepository extends JpaRepository<Menu, String> {
-    @Query("SELECT m from Menu m where m.name LIKE (?1)")
-    List<Menu> findAllByName(String keyword);
+    @Query("SELECT m from Menu as m JOIN m.roles as r WHERE r.id = (?1)")
+    List<Menu> findAllByRoles(String roleName);
 }
