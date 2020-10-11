@@ -17,7 +17,7 @@ public class Menu {
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(unique = true, length = 50, nullable = false)
     private String id;
-    @Column(name = PropertyName.MENU_NAME)
+    @Column(name = PropertyName.MENU_NAME, nullable = false)
     private String name;
     @Column(name = PropertyName.MENU_PATH)
     private String path;
