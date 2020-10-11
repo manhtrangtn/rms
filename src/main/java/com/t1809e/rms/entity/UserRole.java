@@ -105,4 +105,17 @@ public class UserRole {
     public void setMenus(List<Menu> menus) {
         this.menus = menus;
     }
+
+    @Override
+    public String toString() {
+        return "UserRole{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                ", status='" + status + '\'' +
+                ", users=" + users +
+                ", menus=" + menus +
+                '}';
+    }
 }
