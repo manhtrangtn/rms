@@ -35,6 +35,7 @@ public class RoleController {
     @RequestMapping(value = Path.PATH_CREATE, method = RequestMethod.POST)
     public ResponseEntity<?> createRole(@RequestBody RoleDto role) {
         UserRole realRole = role.getRole();
+        realRole.setCreatedAt(LocalDateTime.now());
         realRole.setMenus(roleService.setMenuToRole(role.getMenuNames()));
         roleService.save(realRole);
         return ResponseEntity.ok("Role successfully created!");
