@@ -35,7 +35,6 @@ public class RoleController {
     @RequestMapping(value = Path.PATH_CREATE, method = RequestMethod.POST)
     public ResponseEntity<?> createRole(@RequestBody RoleDto role) {
         UserRole realRole = role.getRole();
-        realRole.setCreatedAt(LocalDateTime.now());
         realRole.setMenus(roleService.setMenuToRole(role.getMenuNames()));
         roleService.save(realRole);
         return ResponseEntity.ok("Role successfully created!");
@@ -44,7 +43,6 @@ public class RoleController {
     @RequestMapping(value = Path.PATH_UPDATE, method = RequestMethod.PUT)
     public ResponseEntity<?> updateRole(@RequestBody RoleDto role) {
         UserRole realRole = role.getRole();
-        realRole.setUpdatedAt(LocalDateTime.now());
         realRole.setMenus(roleService.setMenuToRole(role.getMenuNames()));
         roleService.save(realRole);
         return ResponseEntity.ok("Role successfully updated!");
