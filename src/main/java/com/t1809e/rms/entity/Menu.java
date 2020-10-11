@@ -1,5 +1,6 @@
 package com.t1809e.rms.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.t1809e.rms.utility.constance.PropertyName;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
@@ -32,6 +33,7 @@ public class Menu {
     @ManyToMany
     @JoinColumn(name = "sub_menu", referencedColumnName = "id", updatable = false, insertable = false)
     private List<Menu> subMenus;
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "menu_role",
             joinColumns = { @JoinColumn(name = "menu_id") },

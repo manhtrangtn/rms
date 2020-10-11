@@ -1,5 +1,7 @@
 package com.t1809e.rms.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.t1809e.rms.utility.constance.PropertyName;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -16,18 +18,91 @@ public class UserRole {
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(unique = true, length = 50, nullable = false)
     private String id;
+    @Column(name = PropertyName.ROLE_NAME, nullable = false)
     private String name;
     @CreationTimestamp
+    @Column(name = PropertyName.ROLE_CREATED_AT)
     private LocalDateTime createdAt;
     @UpdateTimestamp
+    @Column(name = PropertyName.ROLE_UPDATED_AT)
     private LocalDateTime updatedAt;
-    @Column(length = 15, nullable = false)
+    @Column(name = PropertyName.ROLE_STATUS, length = 15, nullable = false)
     private String status;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "role")
     private List<User> users;
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "menu_role",
             joinColumns = {@JoinColumn(name = "role_id")},
             inverseJoinColumns = {@JoinColumn(name = "menu_id")})
     private List<Menu> menus;
+
+    public UserRole() {
+    }
+
+    public UserRole(String id, String name, LocalDateTime createdAt, LocalDateTime updatedAt, String status, List<User> users, List<Menu> menus) {
+        this.id = id;
+        this.name = name;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.status = status;
+        this.users = users;
+        this.menus = menus;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public List<Menu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(List<Menu> menus) {
+        this.menus = menus;
+    }
 }
