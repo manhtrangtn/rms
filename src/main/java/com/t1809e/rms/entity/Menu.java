@@ -1,5 +1,6 @@
 package com.t1809e.rms.entity;
 
+import com.t1809e.rms.utility.constance.PropertyName;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -16,13 +17,17 @@ public class Menu {
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(unique = true, length = 50, nullable = false)
     private String id;
+    @Column(name = PropertyName.MENU_NAME, nullable = false)
     private String name;
+    @Column(name = PropertyName.MENU_PATH)
     private String path;
     @CreationTimestamp
+    @Column(name = PropertyName.MENU_CREATED_AT)
     private LocalDateTime createdAt;
     @UpdateTimestamp
+    @Column(name = PropertyName.MENU_UPDATED_AT)
     private LocalDateTime updatedAt;
-    @Column(length = 15, nullable = false)
+    @Column(name = PropertyName.MENU_STATUS, length = 15, nullable = false)
     private String status;
     @ManyToMany
     @JoinColumn(name = "sub_menu", referencedColumnName = "id", updatable = false, insertable = false)
@@ -110,7 +115,6 @@ public class Menu {
     public void setRoles(List<UserRole> roles) {
         this.roles = roles;
     }
-
     @Override
     public String toString() {
         return "Menu{" +
