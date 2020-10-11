@@ -21,4 +21,12 @@ public interface PropertyName {
     String DEPARTMENT_CREATED_AT = "created_at";
     String DEPARTMENT_UPDATED_AT = "updated_at";
     String DEPARTMENT_STATUS = "status";
+
+    //Menu table
+
+    String MENU_NAME = "name";
+    String MENU_PATH = "path";
+    String MENU_CREATED_AT = "created_at";
+    String MENU_UPDATED_AT = "updated_at";
+    String MENU_STATUS = "status";
 }
