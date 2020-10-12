@@ -45,13 +45,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(passwordEncoder());
     }
     private static final String[] AUTH_WHITELIST = {
-            "/v2/api-docs",
-            "/swagger-resources",
-            "/swagger-resources/**",
-            "/configuration/ui",
-            "/configuration/security",
-            "/swagger-ui.html",
-            "/webjars/**"
+            "/api/v1/v2/api-docs",
+            "/api/v1/swagger-resources",
+            "/api/v1/swagger-resources/**",
+            "/api/v1/configuration/ui",
+            "/api/v1/configuration/security",
+            "/api/v1/swagger-ui.html",
+            "/api/v1/webjars/**"
     };
     @Override
     protected void configure(HttpSecurity http) throws Exception {
