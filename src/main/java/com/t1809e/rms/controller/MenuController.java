@@ -45,7 +45,6 @@ public class MenuController {
     @RequestMapping(value = Path.PATH_UPDATE, method = RequestMethod.PUT)
     public ResponseEntity<?> updateMenu(@RequestBody MenuDto menu) {
         Menu realMenu = menu.getMenu();
-        realMenu.setUpdatedAt(LocalDateTime.now());
         realMenu.setRoles(menuService.setRoleToMenu(menu.getRoleNames()));
         menuService.save(realMenu);
         return ResponseEntity.ok("Menu successfully updated!");
