@@ -28,6 +28,7 @@ public class UserRole {
     private LocalDateTime updatedAt;
     @Column(name = PropertyName.ROLE_STATUS, length = 15, nullable = false)
     private String status;
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "role")
     private List<User> users;
     @JsonIgnore
