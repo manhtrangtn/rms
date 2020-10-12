@@ -14,6 +14,7 @@ import javax.management.relation.Role;
 import java.time.LocalDateTime;
 
 @RestController
+@CrossOrigin
 @RequestMapping(value = Path.PATH_ROLE)
 public class RoleController {
     @Autowired

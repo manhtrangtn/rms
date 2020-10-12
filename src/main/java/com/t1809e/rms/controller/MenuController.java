@@ -16,6 +16,7 @@ import java.util.Collection;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping(value = Path.PATH_MENU)
 public class MenuController {
     @Autowired
