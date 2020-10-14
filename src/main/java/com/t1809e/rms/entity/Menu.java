@@ -30,7 +30,7 @@ public class Menu {
     private LocalDateTime updatedAt;
     @Column(name = PropertyName.MENU_STATUS, length = 15, nullable = false)
     private String status;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "sub_menu", referencedColumnName = "id", updatable = false, insertable = false)
     private List<Menu> subMenus;
     @JsonIgnore
