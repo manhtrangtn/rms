@@ -31,7 +31,6 @@ public class UserRole {
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "role")
     private List<User> users;
-    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "menu_role",
             joinColumns = {@JoinColumn(name = "role_id")},

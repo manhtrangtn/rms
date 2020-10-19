@@ -38,6 +38,7 @@ public class MenuController {
     @RequestMapping(value = Path.PATH_CREATE, method = RequestMethod.POST)
     public ResponseEntity<?> createMenu(@RequestBody MenuDto menu) {
         Menu realMenu = menu.getMenu();
+        realMenu.setSubMenus(menu.getSub_menus());
         realMenu.setRoles(menuService.setRoleToMenu(menu.getRoleNames()));
         menuService.save(realMenu);
         return ResponseEntity.ok("Menu successfully created!");

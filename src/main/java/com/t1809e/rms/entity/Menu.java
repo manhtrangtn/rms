@@ -33,7 +33,6 @@ public class Menu {
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "sub_menu", referencedColumnName = "id", updatable = false, insertable = false)
     private List<Menu> subMenus;
-    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "menu_role",
             joinColumns = { @JoinColumn(name = "menu_id") },
